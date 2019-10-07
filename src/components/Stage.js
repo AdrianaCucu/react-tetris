@@ -4,8 +4,12 @@ import Cell from './Cell';
 
 const Stage = ({ stage }) => (
   <div>
-    <Cell />
+    {/*
+       Stage contains an array of rows
+       Each row contains an array of cells
+    */}
+    {stage.map(row => row.map((cell, x) => <Cell key={x} type={cell[0]} />))}
   </div>
 );
 
-export default Cell;
+export default Stage;
