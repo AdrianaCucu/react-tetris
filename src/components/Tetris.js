@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 
+// Helpers:
+import { createStage } from '../gameHelpers';
+
 // Styled components:
 import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
 
@@ -21,6 +24,27 @@ const Tetris = () => {
   const [stage, setStage] = useStage(player);
 
   console.log('re-render');
+
+  const movePlayer = dir => {
+
+  }
+
+  const startGame = () => {
+
+  }
+
+  const drop = () => {
+
+  }
+
+  const dropPlayer = () => {
+
+  }
+
+  // Callback function when we press the keys on the keyboard.
+  const move = ({keyCode}) => {
+
+  }
 
   return (
     <div>
