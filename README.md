@@ -22,7 +22,7 @@ Visit [tetriss.netlify.com](https://tetriss.netlify.com/) to try out the game!
 4. Enter the project folder: `cd react-tetris`
 5. Install dependencies: `npm install`
 
-###🤺🚀
+🤺🚀
 
 ```bash
 npm run start
