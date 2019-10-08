@@ -58,7 +58,18 @@ const Tetris = () => {
     }
   };
 
+  const keyUp = ({ keyCode }) => {
+    if (!gameOver) {
+      if (keyCode === 40) {
+        console.log('interval on');
+        setDropTime(800);
+      }
+    }
+  };
+
   const dropPlayer = () => {
+    console.log('interval off');
+    setDropTime(null);
     drop();
   };
 
@@ -96,7 +107,12 @@ const Tetris = () => {
     <div>
       {/* Need onKeyDown listener here to avoid having to click on the game
         container every time we want to make a move. */}
-      <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)}>
+      <StyledTetrisWrapper
+        role="button"
+        tabIndex="0"
+        onKeyDown={e => move(e)}
+        onKeyUp={keyUp}
+      >
         <StyledTetris>
           <Stage stage={stage} />
           <aside>
