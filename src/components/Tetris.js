@@ -20,7 +20,7 @@ const Tetris = () => {
   // False because it's not game over when we start.
   const [gameOver, setGameOver] = useState(false);
 
-  const [player, updatePlayerPos, resetPlayer] = usePlayer();
+  const [player, updatePlayerPos, resetPlayer, playerRotate] = usePlayer();
   const [stage, setStage] = useStage(player, resetPlayer);
 
   console.log('re-render');
@@ -76,6 +76,12 @@ const Tetris = () => {
       // Code for down arrow.
       else if (keyCode === 40) {
         dropPlayer();
+      }
+
+      // Code for up arrow.
+      // Rotates the tetromino clockwise.
+      else if (keyCode === 38) {
+        playerRotate(stage, 1);
       }
     }
   };
