@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 // Helpers:
-import { createStage } from '../gameHelpers';
+import { createStage, checkCollision } from '../gameHelpers';
 
 // Styled components:
 import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
@@ -25,8 +25,11 @@ const Tetris = () => {
 
   console.log('re-render');
 
+  // Moves the player left and right.
   const movePlayer = dir => {
-    updatePlayerPos({ x: dir, y: 0 });
+    if (!checkCollision(player, stage, { x: dir, y: 0 })) {
+      updatePlayerPos({ x: dir, y: 0 });
+    }
   };
 
   // Reset everything

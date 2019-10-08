@@ -28,12 +28,16 @@ export const useStage = (player, resetPlayer) => {
           }
         });
       });
+      // Then check if we collided.
+      if (player.collided) {
+        resetPlayer();
+      }
 
       return newStage;
     };
 
     setStage(prev => updateStage(prev));
-  }, [player]); // This is the dependency.
+  }, [player, resetPlayer]); // This is the dependency.
 
   return [stage, setStage];
 };
