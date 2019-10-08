@@ -16,6 +16,7 @@ import { useGameStatus } from '../hooks/useGameStatus';
 import Stage from './Stage';
 import Display from './Display';
 import StartButton from './StartButton';
+import Footer from './Footer';
 
 const Tetris = () => {
   const [dropTime, setDropTime] = useState(null);
@@ -143,6 +144,7 @@ const Tetris = () => {
             )}
             <StartButton callback={startGame} />
           </aside>
+          <Footer />
         </StyledTetris>
       </StyledTetrisWrapper>
     </div>
