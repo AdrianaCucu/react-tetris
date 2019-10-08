@@ -25,13 +25,23 @@ const Tetris = () => {
 
   console.log('re-render');
 
-  const movePlayer = dir => {};
+  const movePlayer = dir => {
+    updatePlayerPos({ x: dir, y: 0 });
+  };
 
-  const startGame = () => {};
+  // Reset everything
+  const startGame = () => {
+    setStage(createStage());
+    resetPlayer();
+  };
 
-  const drop = () => {};
+  const drop = () => {
+    UpdatePlayerPos({ x: 0, y: 1, collided: false });
+  };
 
-  const dropPlayer = () => {};
+  const dropPlayer = () => {
+    drop();
+  };
 
   // Callback function when we press the keys on the keyboard.
   const move = ({ keyCode }) => {
@@ -70,7 +80,7 @@ const Tetris = () => {
                 <Display text="LEVEL" />
               </div>
             )}
-            <StartButton />
+            <StartButton onClick={startGame} />
           </aside>
         </StyledTetris>
       </StyledTetrisWrapper>
