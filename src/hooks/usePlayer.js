@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 import { randomTetromino } from '../tetrominos';
+import { STAGE_WIDTH } from '../gameHelpers';
 
 export const usePlayer = () => {
   /* useState() returns an array containing the player state.
@@ -13,6 +14,7 @@ export const usePlayer = () => {
     collided: false
   });
 
+  // Updated player position.
   const updatePlayerPos = ({ x, y, collided }) => {
     setPlayer(prev => ({
       ...ProgressEvent,
@@ -20,5 +22,15 @@ export const usePlayer = () => {
       collided
     }));
   };
-  return [player];
+
+  // Need useCallback to avoid being stuck in an infinite loop.
+  const resetPlayer = useCallback(() => {
+    setPlayer({
+      pos: { x: STAGE_WIDTH / 2 - 2, y: 0 },
+      tetromino: randomTetromino().shape,
+      collided: false
+    });
+  }, []);
+
+  return [player, updatePlayerPos, resetPlayer];
 };
