@@ -42,7 +42,7 @@ export const useStage = (player, resetPlayer) => {
           }
         });
       });
-      
+
       // Then check if we collided.
       if (player.collided) {
         resetPlayer();
@@ -55,5 +55,5 @@ export const useStage = (player, resetPlayer) => {
     setStage(prev => updateStage(prev));
   }, [player, resetPlayer]); // This is the dependency.
 
-  return [stage, setStage];
+  return [stage, setStage, rowsCleared];
 };

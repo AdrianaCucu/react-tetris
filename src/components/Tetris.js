@@ -7,6 +7,7 @@ import { createStage, checkCollision } from '../gameHelpers';
 import { StyledTetris, StyledTetrisWrapper } from './styles/StyledTetris';
 
 // Custom hooks:
+import { useInterval } from '../hooks/useInterval';
 import { usePlayer } from '../hooks/usePlayer';
 import { useStage } from '../hooks/useStage';
 
@@ -35,6 +36,7 @@ const Tetris = () => {
   // Reset everything
   const startGame = () => {
     setStage(createStage());
+    setDropTime(800); // 0.8 seconds
     resetPlayer();
     setGameOver(false);
   };
@@ -85,6 +87,10 @@ const Tetris = () => {
       }
     }
   };
+
+  useInterval(() => {
+    drop();
+  }, dropTime);
 
   return (
     <div>
