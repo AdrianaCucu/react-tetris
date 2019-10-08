@@ -25,30 +25,39 @@ const Tetris = () => {
 
   console.log('re-render');
 
-  const movePlayer = dir => {
+  const movePlayer = dir => {};
 
-  }
+  const startGame = () => {};
 
-  const startGame = () => {
+  const drop = () => {};
 
-  }
-
-  const drop = () => {
-
-  }
-
-  const dropPlayer = () => {
-
-  }
+  const dropPlayer = () => {};
 
   // Callback function when we press the keys on the keyboard.
-  const move = ({keyCode}) => {
+  const move = ({ keyCode }) => {
+    if (!gameOver) {
+      // Code for left arrow.
+      if (keyCode === 37) {
+        movePlayer(-1);
+      }
 
-  }
+      // Code for right arrow.
+      else if (keyCode === 39) {
+        movePlayer(1);
+      }
+
+      // Code for down arrow.
+      else if (keyCode === 40) {
+        dropPlayer();
+      }
+    }
+  };
 
   return (
     <div>
-      <StyledTetrisWrapper>
+      {/* Need onKeyDown listener here to avoid having to click on the game
+        container every time we want to make a move. */}
+      <StyledTetrisWrapper role="button" tabIndex="0" onKeyDown={e => move(e)}>
         <StyledTetris>
           <Stage stage={stage} />
           <aside>
